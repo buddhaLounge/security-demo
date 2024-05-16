@@ -1,13 +1,6 @@
-package io.getarrays.apiapplication.init;
+package io.getarrays.api.init;
 
-import io.getarrays.apiapplication.model.Account;
-import io.getarrays.apiapplication.model.Role;
-import io.getarrays.apiapplication.repository.AccountRepository;
-import io.getarrays.apiapplication.repository.RoleRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import static java.util.List.of;
 

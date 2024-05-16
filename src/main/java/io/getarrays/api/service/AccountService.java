@@ -1,6 +1,6 @@
-package io.getarrays.apiapplication.service;
+package io.getarrays.api.service;
 
-import io.getarrays.apiapplication.model.Account;
+import io.getarrays.api.model.Account;
 
 import java.util.List;
 import java.util.Optional;

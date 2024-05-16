@@ -1,7 +1,8 @@
-package io.getarrays.apiapplication.resource;
+package io.getarrays.api.resource;
 
-import io.getarrays.apiapplication.model.Account;
-import io.getarrays.apiapplication.service.AccountService;
+import io.getarrays.api.model.Account;
+import io.getarrays.api.service.AccountService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class AccountResource implements BaseResource {
 	private final AccountService service;
 
 	@PostMapping
-	public ResponseEntity<Account> create(@RequestBody Account account) {
+	public ResponseEntity<Account> create(@RequestBody @Valid Account account) {
 		Account newAccount = service.createUser(account);
 		return ResponseEntity.created(getLocation(newAccount.getId())).body(newAccount);
 	}

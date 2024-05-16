@@ -1,6 +1,6 @@
-package io.getarrays.apiapplication.repository;
+package io.getarrays.api.repository;
 
-import io.getarrays.apiapplication.model.Role;
+import io.getarrays.api.model.Role;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

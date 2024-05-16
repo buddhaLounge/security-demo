@@ -1,4 +1,4 @@
-package io.getarrays.apiapplication.security;
+package io.getarrays.api.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

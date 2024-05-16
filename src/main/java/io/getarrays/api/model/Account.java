@@ -1,16 +1,14 @@
-package io.getarrays.apiapplication.model;
+package io.getarrays.api.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
-import static jakarta.persistence.CascadeType.*;
 import static jakarta.persistence.FetchType.EAGER;
 
 @Getter
@@ -24,8 +22,12 @@ public class Account implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
+	@NotNull
 	private String username;
+
+	@Column(nullable = false)
+	@NotNull
 	private String password;
 	private boolean enabled = true;
 	private boolean credentialsExpired = false;

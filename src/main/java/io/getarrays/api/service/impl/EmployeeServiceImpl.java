@@ -1,8 +1,8 @@
-package io.getarrays.apiapplication.service.impl;
+package io.getarrays.api.service.impl;
 
-import io.getarrays.apiapplication.model.Employee;
-import io.getarrays.apiapplication.repository.EmployeeRepository;
-import io.getarrays.apiapplication.service.EmployeeService;
+import io.getarrays.api.model.Employee;
+import io.getarrays.api.repository.EmployeeRepository;
+import io.getarrays.api.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package io.getarrays.apiapplication;
+package io.getarrays.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,7 @@
-package io.getarrays.apiapplication.service.impl;
+package io.getarrays.api.service.impl;
 
-import io.getarrays.apiapplication.model.Account;
-import io.getarrays.apiapplication.repository.AccountRepository;
+import io.getarrays.api.model.Account;
+import io.getarrays.api.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<Account> optUser = repo.findByUsername(username);
-		if(!optUser.isPresent()){
+		if(optUser.isEmpty()){
 			String msg = String.format("User %s not found", username);
 			throw new UsernameNotFoundException(msg);
 		}

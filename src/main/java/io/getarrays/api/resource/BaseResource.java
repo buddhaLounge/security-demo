@@ -1,4 +1,4 @@
-package io.getarrays.apiapplication.resource;
+package io.getarrays.api.resource;
 
 import java.net.URI;
 

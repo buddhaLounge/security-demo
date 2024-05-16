@@ -1,6 +1,6 @@
-package io.getarrays.apiapplication.repository;
+package io.getarrays.api.repository;
 
-import io.getarrays.apiapplication.model.Account;
+import io.getarrays.api.model.Account;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.lang.NonNull;
 

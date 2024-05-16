@@ -1,10 +1,8 @@
-package io.getarrays.apiapplication.resource;
+package io.getarrays.api.resource;
 
-import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.*;
-
-import java.net.URI;
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.getarrays.apiapplication.model.Employee;
-import io.getarrays.apiapplication.service.EmployeeService;
+import io.getarrays.api.model.Employee;
+import io.getarrays.api.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -37,7 +35,7 @@ public class EmployeeResource implements BaseResource{
 	}
 
 	@PostMapping
-	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
+	public ResponseEntity<Employee> addEmployee(@RequestBody @Valid Employee employee){
 		Employee e = employeeService.saveOrUpdateEmployee(employee);
 		return ResponseEntity.created(getLocation(e.getId())).body(e);
 	}
@@ -48,7 +46,7 @@ public class EmployeeResource implements BaseResource{
 	}
 
 	@PutMapping
-	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
+	public ResponseEntity<Employee> updateEmployee(@RequestBody @Valid Employee employee){
 		return ResponseEntity.ok(employeeService.saveOrUpdateEmployee(employee));
 	}
 

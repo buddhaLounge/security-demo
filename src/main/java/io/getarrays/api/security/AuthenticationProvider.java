@@ -1,4 +1,4 @@
-package io.getarrays.apiapplication.security;
+package io.getarrays.api.security;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
