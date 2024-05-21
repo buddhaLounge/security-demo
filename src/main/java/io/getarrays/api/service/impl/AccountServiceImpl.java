@@ -2,10 +2,13 @@ package io.getarrays.api.service.impl;
 
 import io.getarrays.api.model.Account;
 import io.getarrays.api.model.Role;
+import io.getarrays.api.model.constants.RoleType;
+import io.getarrays.api.model.dto.AccountDTO;
 import io.getarrays.api.repository.AccountRepository;
 import io.getarrays.api.repository.RoleRepository;
 import io.getarrays.api.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AccountServiceImpl implements AccountService {
 
 	private final AccountRepository userRepo;
@@ -21,11 +25,18 @@ public class AccountServiceImpl implements AccountService {
 	private final PasswordEncoder encoder;
 
 	@Override
-	public Account createUser(Account account) {
-		account.setPassword(encoder.encode(account.getPassword()));
-		Role role = roleRepo.findByName("USER").orElseThrow();
-		account.setRoles(List.of(role));
-		return userRepo.save(account);
+	public Account createUser(AccountDTO account) {
+		log.info("AccountServiceImpl.createUser START with parameter: {}", account);
+		Account a = new Account();
+		a.setUsername(account.getUsername());
+		a.setPassword(encoder.encode(account.getPassword()));
+		List<Role> roles = account.getRoles()
+			.stream()
+			.map(p -> roleRepo.findByName(RoleType.getByName(p.getName())).orElseThrow())
+			.toList();
+		a.setRoles(roles);
+		log.info("AccountServiceImpl.createUser END");
+		return userRepo.save(a);
 	}
 
 	@Override

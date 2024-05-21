@@ -1,8 +1,11 @@
 package io.getarrays.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.getarrays.api.model.constants.RoleType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Role implements Serializable {
 
-	public Role(int id, String code, String name) {
+	public Role(int id, String code, RoleType name) {
 		this.id = id;
 		this.code = code;
 		this.name = name;
@@ -24,7 +27,12 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String code, name;
+	@Column(nullable = false)
+	private String code;
+
+	@Column(nullable = false)
+	@Enumerated(value = EnumType.STRING)
+	private RoleType name;
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "roles")

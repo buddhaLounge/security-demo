@@ -1,6 +1,7 @@
 package io.getarrays.api.resource;
 
 import io.getarrays.api.model.Account;
+import io.getarrays.api.model.dto.AccountDTO;
 import io.getarrays.api.service.AccountService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class AccountResource implements BaseResource {
 	private final AccountService service;
 
 	@PostMapping
-	public ResponseEntity<Account> create(@RequestBody @Valid Account account) {
+	public ResponseEntity<Account> create(@RequestBody @Valid AccountDTO account) {
 		Account newAccount = service.createUser(account);
 		return ResponseEntity.created(getLocation(newAccount.getId())).body(newAccount);
 	}

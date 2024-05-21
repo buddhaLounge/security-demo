@@ -2,8 +2,6 @@ package io.getarrays.api.init;
 
 import org.springframework.boot.CommandLineRunner;
 
-import static java.util.List.of;
-
 /*@Component
 @RequiredArgsConstructor*/
 public class ApplicationStartRunner implements CommandLineRunner {

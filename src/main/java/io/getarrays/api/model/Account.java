@@ -1,7 +1,6 @@
 package io.getarrays.api.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,11 +22,9 @@ public class Account implements Serializable {
 	private int id;
 
 	@Column(unique = true, nullable = false)
-	@NotNull
 	private String username;
 
 	@Column(nullable = false)
-	@NotNull
 	private String password;
 	private boolean enabled = true;
 	private boolean credentialsExpired = false;

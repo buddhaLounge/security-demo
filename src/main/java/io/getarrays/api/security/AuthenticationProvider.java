@@ -1,5 +1,6 @@
 package io.getarrays.api.security;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -8,15 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@RequiredArgsConstructor
 public class AuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
 	private final PasswordEncoder encoder;
 	private final UserDetailsService service;
-
-	public AuthenticationProvider(PasswordEncoder encoder, UserDetailsService service) {
-		this.encoder = encoder;
-		this.service = service;
-	}
 
 	@Override
 	protected void additionalAuthenticationChecks(

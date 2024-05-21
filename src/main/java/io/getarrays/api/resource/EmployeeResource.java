@@ -1,21 +1,14 @@
 package io.getarrays.api.resource;
 
-import java.util.List;
-
-import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import io.getarrays.api.model.Employee;
+import io.getarrays.api.model.dto.EmployeeDTO;
 import io.getarrays.api.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/employees")
@@ -35,7 +28,7 @@ public class EmployeeResource implements BaseResource{
 	}
 
 	@PostMapping
-	public ResponseEntity<Employee> addEmployee(@RequestBody @Valid Employee employee){
+	public ResponseEntity<Employee> addEmployee(@RequestBody @Valid EmployeeDTO employee){
 		Employee e = employeeService.saveOrUpdateEmployee(employee);
 		return ResponseEntity.created(getLocation(e.getId())).body(e);
 	}
@@ -46,7 +39,7 @@ public class EmployeeResource implements BaseResource{
 	}
 
 	@PutMapping
-	public ResponseEntity<Employee> updateEmployee(@RequestBody @Valid Employee employee){
+	public ResponseEntity<Employee> updateEmployee(@RequestBody @Valid EmployeeDTO employee){
 		return ResponseEntity.ok(employeeService.saveOrUpdateEmployee(employee));
 	}
 

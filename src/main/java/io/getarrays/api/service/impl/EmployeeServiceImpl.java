@@ -1,6 +1,7 @@
 package io.getarrays.api.service.impl;
 
 import io.getarrays.api.model.Employee;
+import io.getarrays.api.model.dto.EmployeeDTO;
 import io.getarrays.api.repository.EmployeeRepository;
 import io.getarrays.api.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private final EmployeeRepository employeeRepository;
 
 	@Override
-	public Employee saveOrUpdateEmployee(Employee employee) {
-		return employeeRepository.save(employee);
+	public Employee saveOrUpdateEmployee(EmployeeDTO employee) {
+		Employee e = new Employee();
+		e.setFirstName(employee.getFirstName());
+		e.setLastName(employee.getLastName());
+		e.setEmail(employee.getEmail());
+		return employeeRepository.save(e);
 	}
 
 	@Override
